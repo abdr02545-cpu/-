@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>حروف مع بدر</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>حروف مع بدر</h1>
+  <p>🔵 لاعب 1 | 🔴 لاعب 2</p>
+
+  <div class="board" id="board"></div>
+
+  <div class="controls">
+    <div class="top">
+      <span id="turn">دور: 🔵 لاعب 1</span>
+      <span class="timer" id="timer">30</span>
+    </div>
+    <div class="input-area">
+      <input type="text" id="wordInput" placeholder="اكتب كلمة تبدأ بالحرف" />
+      <button id="submitBtn">تأكيد</button>
+      <button id="resetBtn">إعادة</button>
+    </div>
+    <div class="question" id="question"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
