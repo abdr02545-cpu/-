@@ -65,15 +65,14 @@ h1 {
 .board {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  gap: 6px; /* مهم جدًا */
+  gap: 0px;
   justify-items: center;
   margin-bottom: 20px;
   position: relative;
 }
 
-/* هذا يخلي الصفوف متزحزحة (Hex grid) */
 .board .row-offset:nth-child(2n) {
-  transform: translateX(43px); /* نصف عرض الخلية تقريبًا */
+  transform: translateX(42px);
 }
 
 .cell {
@@ -98,11 +97,6 @@ h1 {
     25% 100%,
     0% 50%
   );
-}
-
-.cell.selected {
-  transform: translateY(-4px);
-  border-color: rgba(255,255,255,0.6);
 }
 
 .cell.green {
