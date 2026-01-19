@@ -1,78 +1,59 @@
-:root {
-    --primary: #6c5ce7;
-    --secondary: #fdcb6e;
-    --bg: #dfe6e9;
-    --white: #ffffff;
-}
-
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: var(--bg);
+    background-color: #1a1a2e;
+    color: white;
+    font-family: 'Cairo', sans-serif;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    height: 100vh;
     margin: 0;
 }
 
-.game-container {
-    background: var(--white);
-    padding: 30px;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    width: 90%;
-    max-width: 450px;
-    text-align: center;
+.grid {
+    display: grid;
+    grid-template-columns: repeat(5, 80px);
+    gap: 10px;
+    margin-top: 20px;
+    background: #16213e;
+    padding: 20px;
+    border-radius: 15px;
 }
 
-h1 { color: var(--primary); }
-
-.stats {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
-    font-weight: bold;
-}
-
-.char-hint {
-    font-size: 3rem;
-    color: var(--secondary);
-    background: #2d3436;
+/* شكل الخلية السداسية */
+.hexagon {
     width: 80px;
-    height: 80px;
-    line-height: 80px;
-    border-radius: 50%;
-    margin: 0 auto 20px;
+    height: 90px;
+    background-color: #444;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    transition: 0.3s;
 }
 
-.question-box {
-    background: #f1f2f6;
-    padding: 15px;
-    border-radius: 10px;
-    margin-bottom: 20px;
-    font-size: 1.1rem;
+.hexagon:hover { transform: scale(1.1); background-color: #555; }
+.hexagon.red { background-color: #e94560; } /* فريق عزيز */
+.hexagon.blue { background-color: #0f3460; } /* الفريق المنافس */
+
+.game-ui {
+    text-align: center;
+    margin-top: 20px;
+    width: 400px;
 }
 
 input {
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 15px;
-    border: 2px solid #ddd;
-    border-radius: 8px;
-    box-sizing: border-box;
+    padding: 10px;
+    width: 70%;
+    border-radius: 5px;
+    border: none;
 }
 
 button {
-    background: var(--primary);
-    color: white;
+    padding: 10px 20px;
+    background: #00d2ff;
     border: none;
-    padding: 12px 25px;
-    border-radius: 8px;
+    border-radius: 5px;
     cursor: pointer;
-    width: 100%;
-    font-size: 1rem;
 }
-
-button:hover { opacity: 0.9; }
-
-.message { margin-top: 15px; font-weight: bold; height: 25px; }
