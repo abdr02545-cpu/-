@@ -1,33 +1,29 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>حروف مع بدر</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="container">
+  <div class="app">
     <header>
-      <h1>حروف مع بدر</h1>
-      <div class="status">
-        <div id="timer">60</div>
-      </div>
+      <div class="title">حروف مع بدر</div>
+      <div class="timer" id="timer">60</div>
     </header>
 
-    <div class="board" id="board"></div>
+    <div id="board" class="board"></div>
 
-    <div class="controls">
-      <div class="question" id="question"></div>
-      <input type="text" id="answer" placeholder="اكتب الإجابة هنا">
-      <button id="submitBtn">إرسال</button>
-      <button class="reset" id="resetBtn">إعادة</button>
+    <div class="panel">
+      <div id="question" class="question">اختَر خلية عشان يطلع السؤال</div>
+      <input id="answer" type="text" placeholder="اكتب الجواب هنا" />
+      <div class="buttons">
+        <button id="submit">إرسال</button>
+        <button id="reset">إعادة</button>
+      </div>
     </div>
   </div>
-
-  <audio id="soundClick" src="click.mp3"></audio>
-  <audio id="soundCorrect" src="correct.mp3"></audio>
-  <audio id="soundWrong" src="wrong.mp3"></audio>
 
   <script src="script.js"></script>
 </body>
