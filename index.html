@@ -1,28 +1,30 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>حروف مع بدر</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>حروف مع بدر</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <h1>حروف مع بدر</h1>
-  <p>🟩 لاعب أخضر (فوق → تحت) | 🟧 لاعب برتقالي (يمين → يسار)</p>
+  <div class="container">
+    <header>
+      <h1>حروف مع بدر</h1>
+      <div class="status">
+        <div id="turn">دور: 🟩 لاعب أخضر</div>
+        <div id="timer">60</div>
+      </div>
+    </header>
 
-  <div class="board" id="board"></div>
+    <div id="board" class="board"></div>
 
-  <div class="controls">
-    <div class="top">
-      <span id="turn">دور: 🟩 لاعب أخضر</span>
-      <span class="timer" id="timer">60</span>
+    <div class="controls">
+      <div id="question" class="question">اختَر خانة عشان يطلع السؤال</div>
+      <input id="wordInput" type="text" placeholder="اكتب الجواب هنا..." />
+      <button id="submitBtn">إرسال</button>
+      <button id="resetBtn" class="reset">إعادة</button>
     </div>
-    <div class="input-area">
-      <input type="text" id="wordInput" placeholder="اكتب كلمة تبدأ بالحرف" />
-      <button id="submitBtn">تأكيد</button>
-      <button id="resetBtn">إعادة</button>
-    </div>
-    <div class="question" id="question"></div>
   </div>
 
   <script src="script.js"></script>
