@@ -65,46 +65,34 @@ h1 {
 .board {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  gap: 10px;
+  gap: 12px;
   justify-items: center;
   margin-bottom: 20px;
 }
 
 /* Hexagon shape */
 .cell {
-  width: 70px;
-  height: 80px;
+  width: 86px;
+  height: 74px;
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid var(--border);
   color: var(--text);
-  font-size: 28px;
-  font-weight: 700;
+  font-size: 30px;
+  font-weight: 800;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
   position: relative;
   transition: transform 0.15s ease, background 0.15s ease;
-}
-
-.cell:before,
-.cell:after {
-  content: "";
-  position: absolute;
-  width: 0;
-  border-left: 35px solid transparent;
-  border-right: 35px solid transparent;
-}
-
-.cell:before {
-  bottom: 100%;
-  border-bottom: 20px solid rgba(255, 255, 255, 0.08);
-}
-
-.cell:after {
-  top: 100%;
-  width: 0;
-  border-top: 20px solid rgba(255, 255, 255, 0.08);
+  clip-path: polygon(
+    25% 0%,
+    75% 0%,
+    100% 50%,
+    75% 100%,
+    25% 100%,
+    0% 50%
+  );
 }
 
 .cell.selected {
