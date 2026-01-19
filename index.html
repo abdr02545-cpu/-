@@ -1,22 +1,30 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>مسابقة حروف الأصلية</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flappy Bird</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <h1>📟 مسابقة حروف</h1>
-    <div class="grid" id="grid">
-        </div>
-
-    <div class="game-ui">
-        <h3 id="current-char">اختر حرفاً من الشبكة</h3>
-        <p id="question-text">السؤال سيظهر هنا...</p>
-        <input type="text" id="ans" placeholder="الإجابة...">
-        <button onclick="checkAns()">إرسال</button>
+  <div id="game">
+    <div id="startScreen" class="overlay">
+      <h1>Flappy Bird</h1>
+      <p>اضغط للشروع</p>
     </div>
 
-    <script src="script.js"></script>
+    <canvas id="canvas"></canvas>
+
+    <div id="endScreen" class="overlay hidden">
+      <h1>انتهت اللعبة</h1>
+      <p id="finalScore">النقاط: 0</p>
+      <button id="restartBtn">إعادة اللعب</button>
+      <button id="shareBtn">مشاركة النقاط</button>
+    </div>
+
+    <div id="score">0</div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
