@@ -10,17 +10,24 @@
   <div class="app">
     <header>
       <div class="title">حروف مع بدر</div>
-      <div class="timer" id="timer">60</div>
+      <div class="status">
+        <div class="player" id="playerTurn">اللاعب: أخضر</div>
+        <div class="timer" id="timer">60</div>
+      </div>
     </header>
 
     <div id="board" class="board"></div>
 
     <div class="panel">
-      <div id="question" class="question">اختَر خلية عشان يطلع السؤال</div>
+      <div class="question" id="question">اختَر خلية عشان يطلع السؤال</div>
       <input id="answer" type="text" placeholder="اكتب الجواب هنا" />
       <div class="buttons">
         <button id="submit">إرسال</button>
         <button id="reset">إعادة</button>
+      </div>
+      <div class="score">
+        <div>أخضر: <span id="scoreGreen">0</span></div>
+        <div>برتقالي: <span id="scoreOrange">0</span></div>
       </div>
     </div>
   </div>
