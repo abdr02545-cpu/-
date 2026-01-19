@@ -1,121 +1,115 @@
-const board = document.getElementById("board");
+const boardEl = document.getElementById("board");
 const questionEl = document.getElementById("question");
-const answerInput = document.getElementById("answer");
+const answerEl = document.getElementById("answer");
 const timerEl = document.getElementById("timer");
-const submitBtn = document.getElementById("submitBtn");
-const resetBtn = document.getElementById("resetBtn");
+const submitBtn = document.getElementById("submit");
+const resetBtn = document.getElementById("reset");
 
-const soundClick = document.getElementById("soundClick");
-const soundCorrect = document.getElementById("soundCorrect");
-const soundWrong = document.getElementById("soundWrong");
+const letters = "ابتثجحخدذرزسشصضطظعغفقكلمنهوي".split("");
 
-let timer = 60;
-let interval;
-let currentCell = null;
-let currentAnswer = "";
-
-// أسئلة + جواب واحد لكل حرف
-const questions = {
-  "أ": "أسد",
-  "ب": "بدر",
-  "ت": "تفاح",
-  "ث": "ثعلب",
-  "ج": "جمل",
-  "ح": "حصان",
-  "خ": "خروف",
-  "د": "دب",
-  "ذ": "ذهب",
-  "ر": "رمان",
-  "ز": "زرافة",
-  "س": "سمك",
-  "ش": "شمس",
-  "ص": "صقر",
-  "ض": "ضفدع",
-  "ط": "طائر",
-  "ظ": "ظبي",
-  "ع": "عنب",
-  "غ": "غزال",
-  "ف": "فيل",
-  "ق": "قلم",
-  "ك": "كتاب",
-  "ل": "ليمون",
-  "م": "موز",
-  "ن": "نمر",
-  "هـ": "هلال",
-  "و": "وردة",
-  "ي": "يمامة"
+const qa = {
+  "ا":"أسد",
+  "ب":"بطيخ",
+  "ت":"تركيا",
+  "ث":"ثلاجة",
+  "ج":"جمل",
+  "ح":"حصان",
+  "خ":"خروف",
+  "د":"دب",
+  "ذ":"ذئب",
+  "ر":"رمان",
+  "ز":"زيت",
+  "س":"سمك",
+  "ش":"شمعة",
+  "ص":"صقر",
+  "ض":"ضفدع",
+  "ط":"طائرة",
+  "ظ":"ظرف",
+  "ع":"عنب",
+  "غ":"غزال",
+  "ف":"فيل",
+  "ق":"قلم",
+  "ك":"كتاب",
+  "ل":"ليمون",
+  "م":"موز",
+  "ن":"نمر",
+  "ه":"هاتف",
+  "و":"وردة",
+  "ي":"يمامة"
 };
 
-// إنشاء اللوحة 6x6
-const letters = Object.keys(questions);
-let boardLetters = [];
+let selectedCell = null;
+let currentAnswer = "";
+let timer = 60;
+let interval;
 
-for (let i = 0; i < 36; i++) {
-  boardLetters.push(letters[Math.floor(Math.random() * letters.length)]);
+function randLetter(){
+  return letters[Math.floor(Math.random()*letters.length)];
 }
 
-function createBoard() {
-  board.innerHTML = "";
-  for (let i = 0; i < 36; i++) {
-    const cell = document.createElement("div");
-    cell.classList.add("cell");
-    cell.textContent = boardLetters[i];
-    cell.dataset.letter = boardLetters[i];
-    cell.addEventListener("click", () => selectCell(cell));
-    board.appendChild(cell);
+function createBoard(){
+  boardEl.innerHTML = "";
+  for(let r=0;r<6;r++){
+    const row = document.createElement("div");
+    row.classList.add("row");
+    for(let c=0;c<6;c++){
+      const cell = document.createElement("div");
+      cell.classList.add("cell");
+      const letter = randLetter();
+      cell.textContent = letter;
+      cell.dataset.letter = letter;
+      cell.addEventListener("click", ()=>selectCell(cell));
+      row.appendChild(cell);
+    }
+    boardEl.appendChild(row);
   }
 }
 
-function selectCell(cell) {
-  soundClick.play();
-  currentCell = cell;
-  currentAnswer = questions[cell.dataset.letter];
-  questionEl.textContent = `اكتب: ${currentAnswer}`;
-  answerInput.value = "";
-  answerInput.focus();
+function selectCell(cell){
+  selectedCell = cell;
+  const letter = cell.dataset.letter;
+  currentAnswer = qa[letter];
+  questionEl.textContent = `سؤال: اكتب كلمة تبدأ بحرف "${letter}" (الجواب الصحيح واحد فقط)`;
+  answerEl.value = "";
+  answerEl.focus();
 }
 
-submitBtn.addEventListener("click", () => {
-  if (!currentCell) return;
-
-  const userAnswer = answerInput.value.trim();
-
-  if (userAnswer === currentAnswer) {
-    soundCorrect.play();
-    if (currentCell.dataset.player === "green") return;
-
-    currentCell.classList.add("green");
-    currentCell.dataset.player = "green";
-  } else {
-    soundWrong.play();
-  }
-});
-
-resetBtn.addEventListener("click", () => {
-  resetGame();
-});
-
-function startTimer() {
+function startTimer(){
+  clearInterval(interval);
+  timer = 60;
   timerEl.textContent = timer;
-  interval = setInterval(() => {
+  interval = setInterval(()=>{
     timer--;
     timerEl.textContent = timer;
-    if (timer <= 0) {
+    if(timer<=0){
       clearInterval(interval);
       alert("انتهى الوقت!");
     }
-  }, 1000);
+  },1000);
 }
 
-function resetGame() {
-  clearInterval(interval);
-  timer = 60;
-  startTimer();
+submitBtn.addEventListener("click", ()=>{
+  if(!selectedCell){
+    alert("اختَر خلية أولًا!");
+    return;
+  }
+  if(answerEl.value.trim() === currentAnswer){
+    selectedCell.classList.add("green");
+    selectedCell = null;
+    questionEl.textContent = "تمام! اختَر خلية ثانية";
+    answerEl.value = "";
+  }else{
+    alert("خطأ، جرّب مرة ثانية.");
+  }
+});
+
+resetBtn.addEventListener("click", ()=>{
   createBoard();
-  currentCell = null;
-  questionEl.textContent = "";
-  answerInput.value = "";
-}
+  startTimer();
+  questionEl.textContent = "اختَر خلية عشان يطلع السؤال";
+  answerEl.value = "";
+  selectedCell = null;
+});
 
 createBoard();
 startTimer();
