@@ -2,26 +2,21 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>لعبة حروف مع عزيز</title>
+    <title>مسابقة حروف الأصلية</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="game-container">
-        <h1>🎮 حروف مع بدر</h1>
-        <div class="stats">
-            <span>النقاط: <span id="score">0</span></span>
-            <span>السؤال: <span id="q-num">1</span></span>
+    <h1>📟 مسابقة حروف</h1>
+    <div class="grid" id="grid">
         </div>
 
-        <div class="char-hint" id="char-hint">؟</div>
-        <div class="question-box" id="question">جاري التحميل...</div>
-        
-        <input type="text" id="answer-input" placeholder="اكتب إجابتك هنا..." autocomplete="off">
-        <button id="submit-btn">تحقق من الإجابة</button>
-        
-        <div class="message" id="message"></div>
+    <div class="game-ui">
+        <h3 id="current-char">اختر حرفاً من الشبكة</h3>
+        <p id="question-text">السؤال سيظهر هنا...</p>
+        <input type="text" id="ans" placeholder="الإجابة...">
+        <button onclick="checkAns()">إرسال</button>
     </div>
+
     <script src="script.js"></script>
 </body>
 </html>
