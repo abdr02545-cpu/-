@@ -65,12 +65,17 @@ h1 {
 .board {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  gap: 12px;
+  gap: 6px; /* مهم جدًا */
   justify-items: center;
   margin-bottom: 20px;
+  position: relative;
 }
 
-/* Hexagon shape */
+/* هذا يخلي الصفوف متزحزحة (Hex grid) */
+.board .row-offset:nth-child(2n) {
+  transform: translateX(43px); /* نصف عرض الخلية تقريبًا */
+}
+
 .cell {
   width: 86px;
   height: 74px;
