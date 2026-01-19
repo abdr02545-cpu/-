@@ -1,37 +1,27 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>حروف مع بدر</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لعبة حروف مع عزيز</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="app">
-    <header>
-      <div class="title">حروف مع بدر</div>
-      <div class="status">
-        <div class="player" id="playerTurn">اللاعب: أخضر</div>
-        <div class="timer" id="timer">60</div>
-      </div>
-    </header>
+    <div class="game-container">
+        <h1>🎮 حروف مع بدر</h1>
+        <div class="stats">
+            <span>النقاط: <span id="score">0</span></span>
+            <span>السؤال: <span id="q-num">1</span></span>
+        </div>
 
-    <div id="board" class="board"></div>
-
-    <div class="panel">
-      <div class="question" id="question">اختَر خلية عشان يطلع السؤال</div>
-      <input id="answer" type="text" placeholder="اكتب الجواب هنا" />
-      <div class="buttons">
-        <button id="submit">إرسال</button>
-        <button id="reset">إعادة</button>
-      </div>
-      <div class="score">
-        <div>أخضر: <span id="scoreGreen">0</span></div>
-        <div>برتقالي: <span id="scoreOrange">0</span></div>
-      </div>
+        <div class="char-hint" id="char-hint">؟</div>
+        <div class="question-box" id="question">جاري التحميل...</div>
+        
+        <input type="text" id="answer-input" placeholder="اكتب إجابتك هنا..." autocomplete="off">
+        <button id="submit-btn">تحقق من الإجابة</button>
+        
+        <div class="message" id="message"></div>
     </div>
-  </div>
-
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
