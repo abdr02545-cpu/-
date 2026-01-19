@@ -1,31 +1,33 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>حروف مع بدر</title>
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
     <header>
       <h1>حروف مع بدر</h1>
       <div class="status">
-        <div id="turn">دور: 🟩 لاعب أخضر</div>
         <div id="timer">60</div>
       </div>
     </header>
 
-    <div id="board" class="board"></div>
+    <div class="board" id="board"></div>
 
     <div class="controls">
-      <div id="question" class="question">اختَر خانة عشان يطلع السؤال</div>
-      <input id="wordInput" type="text" placeholder="اكتب الجواب هنا..." />
+      <div class="question" id="question"></div>
+      <input type="text" id="answer" placeholder="اكتب الإجابة هنا">
       <button id="submitBtn">إرسال</button>
-      <button id="resetBtn" class="reset">إعادة</button>
+      <button class="reset" id="resetBtn">إعادة</button>
     </div>
   </div>
+
+  <audio id="soundClick" src="click.mp3"></audio>
+  <audio id="soundCorrect" src="correct.mp3"></audio>
+  <audio id="soundWrong" src="wrong.mp3"></audio>
 
   <script src="script.js"></script>
 </body>
