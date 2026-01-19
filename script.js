@@ -16,9 +16,39 @@ const resetBtn = document.getElementById("resetBtn");
 const questionEl = document.getElementById("question");
 
 const letters = "ابتثجحخدذرزسشصضطظعغفقكلمنهوي".split("");
-let usedQuestions = {};
 
-// ========== أصوات باستخدام WebAudio ==========
+const qaBank = {
+  "ا": { q: "اسم حيوان يبدأ بحرف ا", a: "أسد" },
+  "ب": { q: "اسم فاكهة تبدأ بحرف ب", a: "بطيخ" },
+  "ت": { q: "اسم دولة تبدأ بحرف ت", a: "تركيا" },
+  "ث": { q: "اسم شيء في البيت يبدأ بحرف ث", a: "ثلاجة" },
+  "ج": { q: "اسم حيوان يبدأ بحرف ج", a: "جمل" },
+  "ح": { q: "اسم نبات يبدأ بحرف ح", a: "حبة" },
+  "خ": { q: "اسم شيء في المطبخ يبدأ بحرف خ", a: "خلاط" },
+  "د": { q: "اسم مدينة تبدأ بحرف د", a: "دبي" },
+  "ذ": { q: "اسم حيوان يبدأ بحرف ذ", a: "ذئب" },
+  "ر": { q: "اسم فاكهة تبدأ بحرف ر", a: "رمان" },
+  "ز": { q: "اسم شيء لونه أصفر يبدأ بحرف ز", a: "زيت" },
+  "س": { q: "اسم حيوان يبدأ بحرف س", a: "سمك" },
+  "ش": { q: "اسم شيء في البيت يبدأ بحرف ش", a: "شمعة" },
+  "ص": { q: "اسم حيوان يبدأ بحرف ص", a: "صقر" },
+  "ض": { q: "اسم حيوان يبدأ بحرف ض", a: "ضفدع" },
+  "ط": { q: "اسم شيء يبدأ بحرف ط", a: "طائرة" },
+  "ظ": { q: "اسم شيء يبدأ بحرف ظ", a: "ظرف" },
+  "ع": { q: "اسم فاكهة تبدأ بحرف ع", a: "عنب" },
+  "غ": { q: "اسم حيوان يبدأ بحرف غ", a: "غزال" },
+  "ف": { q: "اسم شيء في البيت يبدأ بحرف ف", a: "فراش" },
+  "ق": { q: "اسم شيء يبدأ بحرف ق", a: "قلم" },
+  "ك": { q: "اسم شيء في المدرسة يبدأ بحرف ك", a: "كتاب" },
+  "ل": { q: "اسم فاكهة تبدأ بحرف ل", a: "ليمون" },
+  "م": { q: "اسم حيوان يبدأ بحرف م", a: "موز" },
+  "ن": { q: "اسم حيوان يبدأ بحرف ن", a: "نمر" },
+  "ه": { q: "اسم شيء يبدأ بحرف ه", a: "هاتف" },
+  "و": { q: "اسم شيء يبدأ بحرف و", a: "وردة" },
+  "ي": { q: "اسم شيء يبدأ بحرف ي", a: "يرقة" }
+};
+
+// أصوات
 const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
 function playTone(freq, duration = 0.1, type = "sine") {
@@ -40,44 +70,6 @@ function soundWrong() { playTone(220, 0.2, "sawtooth"); }
 function soundWin() { playTone(1200, 0.2, "sine"); playTone(1000, 0.2, "sine"); }
 function soundTimeOut() { playTone(150, 0.4, "square"); }
 
-// ========== أسئلة عشوائية بدون تكرار ==========
-function generateQuestion(letter) {
-  const templates = [
-    `اكتب شيء يبدأ بحرف ${letter}`,
-    `اسم حيوان يبدأ بحرف ${letter}`,
-    `اسم مدينة يبدأ بحرف ${letter}`,
-    `اسم فاكهة يبدأ بحرف ${letter}`,
-    `شيء في البيت يبدأ بحرف ${letter}`,
-    `شيء في المدرسة يبدأ بحرف ${letter}`,
-    `اسم نبات يبدأ بحرف ${letter}`,
-    `اسم مهنة يبدأ بحرف ${letter}`,
-    `اسم لون يبدأ بحرف ${letter}`,
-    `اسم أداة في المطبخ تبدأ بحرف ${letter}`,
-    `اسم جهاز إلكتروني يبدأ بحرف ${letter}`,
-    `اسم فيلم يبدأ بحرف ${letter}`,
-    `اسم كتاب يبدأ بحرف ${letter}`,
-    `اسم لعبة يبدأ بحرف ${letter}`,
-    `اسم علامة مرور تبدأ بحرف ${letter}`,
-    `اسم جبل أو نهر يبدأ بحرف ${letter}`,
-    `اسم طائر يبدأ بحرف ${letter}`,
-    `اسم عيد يبدأ بحرف ${letter}`,
-    `اسم صفة تبدأ بحرف ${letter}`,
-    `اسم سيارة يبدأ بحرف ${letter}`
-  ];
-
-  if (!usedQuestions[letter]) usedQuestions[letter] = [];
-  const remaining = templates.filter(t => !usedQuestions[letter].includes(t));
-  if (remaining.length === 0) {
-    usedQuestions[letter] = [];
-    return generateQuestion(letter);
-  }
-
-  const q = remaining[Math.floor(Math.random() * remaining.length)];
-  usedQuestions[letter].push(q);
-  return q;
-}
-
-// ========== بناء اللوحة ==========
 function randomLetter() {
   return letters[Math.floor(Math.random() * letters.length)];
 }
@@ -107,7 +99,7 @@ function selectCell(index) {
   document.querySelector(`.cell[data-index="${index}"]`).classList.add("selected");
 
   const letter = board[index].letter;
-  questionEl.textContent = generateQuestion(letter);
+  questionEl.textContent = qaBank[letter].q;
   soundSelect();
 }
 
@@ -206,9 +198,11 @@ function submitWord() {
   if (!word) return alert("اكتب كلمة!");
 
   const letter = board[selectedCell].letter;
-  if (word[0] !== letter) {
+  const correctWord = qaBank[letter].a;
+
+  if (word !== correctWord) {
     soundWrong();
-    return alert(`الكلمة لازم تبدأ بحرف "${letter}"`);
+    return alert("خطأ!");
   }
 
   board[selectedCell].owner = currentPlayer;
