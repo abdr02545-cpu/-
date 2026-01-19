@@ -1,30 +1,137 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Flappy Bird</title>
+  <title>قبيلة بني مالك</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div id="game">
-    <div id="startScreen" class="overlay">
-      <h1>Flappy Bird</h1>
-      <p>اضغط للشروع</p>
+
+  <!-- HEADER -->
+  <header>
+    <div class="logo">قبيلة بني مالك</div>
+    <nav>
+      <a href="#home">الرئيسية</a>
+      <a href="#history">التاريخ</a>
+      <a href="#branches">الفروع</a>
+      <a href="#famous">الأعلام</a>
+      <a href="#gallery">الصور</a>
+      <a href="#map">الخريطة</a>
+      <a href="#contact">تواصل</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section id="home" class="hero">
+    <div class="hero-text">
+      <h1>قبيلة بني مالك</h1>
+      <p>قبيلة عريقة في الجزيرة العربية، لها تاريخ طويل وأثر واضح في المجتمع.</p>
+      <a href="#history" class="btn">تعرف على التاريخ</a>
     </div>
+    <div class="hero-img"></div>
+  </section>
 
-    <canvas id="canvas"></canvas>
-
-    <div id="endScreen" class="overlay hidden">
-      <h1>انتهت اللعبة</h1>
-      <p id="finalScore">النقاط: 0</p>
-      <button id="restartBtn">إعادة اللعب</button>
-      <button id="shareBtn">مشاركة النقاط</button>
+  <!-- HISTORY -->
+  <section id="history" class="section">
+    <h2>تاريخ القبيلة</h2>
+    <p>
+      بني مالك قبيلة عربية أصيلة، لها جذور قديمة في الجزيرة العربية، ومرت بمراحل تاريخية متعددة،
+      وقد أثرت في المجتمع من خلال العلم، والشجاعة، والكرم.
+    </p>
+    <div class="cards">
+      <div class="card">
+        <h3>التراث</h3>
+        <p>الاهتمام بالتراث والأصالة والاحتفاظ بالقيم القديمة.</p>
+      </div>
+      <div class="card">
+        <h3>الكرم</h3>
+        <p>الشهرة بالكرم وحسن الضيافة في كل المناسبات.</p>
+      </div>
+      <div class="card">
+        <h3>الشجاعة</h3>
+        <p>الشهامة والشجاعة من الصفات المعروفة عن القبيلة.</p>
+      </div>
     </div>
+  </section>
 
-    <div id="score">0</div>
-  </div>
+  <!-- BRANCHES -->
+  <section id="branches" class="section">
+    <h2>فروع القبيلة</h2>
+    <p>تتفرع القبيلة إلى عدة فروع، وكل فرع له تاريخه وأعلامه.</p>
+    <div class="cards">
+      <div class="card">
+        <h3>فرع 1</h3>
+        <p>وصف مختصر عن الفرع.</p>
+      </div>
+      <div class="card">
+        <h3>فرع 2</h3>
+        <p>وصف مختصر عن الفرع.</p>
+      </div>
+      <div class="card">
+        <h3>فرع 3</h3>
+        <p>وصف مختصر عن الفرع.</p>
+      </div>
+    </div>
+  </section>
 
-  <script src="script.js"></script>
+  <!-- FAMOUS -->
+  <section id="famous" class="section">
+    <h2>الأعلام والمشاهير</h2>
+    <p>أسماء بعض الأعلام المعروفين من قبيلة بني مالك.</p>
+    <div class="cards">
+      <div class="card">
+        <h3>شخصية 1</h3>
+        <p>وصف مختصر عن الشخصية.</p>
+      </div>
+      <div class="card">
+        <h3>شخصية 2</h3>
+        <p>وصف مختصر عن الشخصية.</p>
+      </div>
+      <div class="card">
+        <h3>شخصية 3</h3>
+        <p>وصف مختصر عن الشخصية.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section id="gallery" class="section">
+    <h2>معرض الصور</h2>
+    <p>صور تراثية ومعاصرة لتمثيل القبيلة.</p>
+    <div class="gallery">
+      <div class="photo"></div>
+      <div class="photo"></div>
+      <div class="photo"></div>
+      <div class="photo"></div>
+    </div>
+  </section>
+
+  <!-- MAP -->
+  <section id="map" class="section">
+    <h2>الخريطة</h2>
+    <p>مناطق تواجد القبيلة أو المناطق المرتبطة بها.</p>
+    <div class="map">
+      <p>خريطة (مكان مخصص لإضافة خريطة حقيقية لاحقًا)</p>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section">
+    <h2>تواصل معنا</h2>
+    <p>لو عندك معلومات إضافية أو تريد تضيف شيء، تواصل معنا.</p>
+    <form>
+      <input type="text" placeholder="الاسم" required />
+      <input type="email" placeholder="البريد" required />
+      <textarea placeholder="رسالتك" required></textarea>
+      <button class="btn">إرسال</button>
+    </form>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>تم تصميم الموقع بواسطة <strong>بدر حسن المالكي</strong></p>
+  </footer>
+
 </body>
 </html>
