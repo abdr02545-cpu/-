@@ -70,7 +70,7 @@ nav a {
 .hero-img {
   width: 300px;
   height: 300px;
-  background: url('https://images.unsplash.com/photo-1541447273872-5b7a43b3e3b9?auto=format&fit=crop&w=600&q=80') center/cover;
+  background: url('https://images.unsplash.com/photo-1533497033346-8e7c0f5c4f2b?auto=format&fit=crop&w=600&q=80') center/cover;
   border-radius: 30px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.2);
 }
@@ -116,11 +116,36 @@ nav a {
   justify-content: center;
 }
 
+/* تم تعديل المعرض ليكون نص بدل الصور */
 .photo {
-  width: 200px;
+  width: 300px;
   height: 150px;
-  background: url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=600&q=80') center/cover;
+  background: white;
   border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 15px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+/* الأبيات الثلاثة */
+.photo:nth-child(1)::before {
+  content: "يا بني مالك شهمٌ وما نهاب\\A والكرم عندنا سِيرة وعِتاب\\A الضيف يوم يزورنا مُكرَّم\\A ولا نرضى إلا بالطيب جواب";
+  white-space: pre-line;
+}
+
+.photo:nth-child(2)::before {
+  content: "يا بني مالك أهل الوفا\\A نِمشي للحق بلا تردد\\A إذا جاء الليل نقف صامدين\\A ونفدي العرض بلا كلل";
+  white-space: pre-line;
+}
+
+.photo:nth-child(3)::before {
+  content: "تراثنا في القلب حِكايه\\A ونعيش به وبالجد نفاخر\\A بني مالك شموخ واصاله\\A وفي كل مَسار نرفع الراية";
+  white-space: pre-line;
 }
 
 .map {
